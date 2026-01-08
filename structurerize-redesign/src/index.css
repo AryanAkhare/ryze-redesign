@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* =========================
+   CTA Button – Fill Hover
+   ========================= */
+:root {
+  --color-bg: #ffffff;          /* background */
+  --color-text-primary: #FF4801; /* main text */
+  --color-text-secondary:#090a0a; /* muted text */
+  --color-accent:#090a0a;       /* CTA / focus */
+}
+.cta-btn-lg {
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  font-weight: 1000;
+  font-size: 17px;
+
+  color: var(--color-bg);
+  background: var(--color-accent);
+
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms ease;
+}
+
+.cta-btn-lg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0;
+  border-radius: 15px;
+
+  background-color: var(--color-text-primary);
+  z-index: -1;
+
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms ease;
+}
+
+.cta-btn-lg:hover {
+  color: var(--color-bg);
+}
+
+.cta-btn-lg:hover::before {
+  width: 100%;
+}
+
+
+.nav-link-lg {
+  @apply relative text-base font-bold text-gray-800 cursor-pointer
+         transition-colors duration-300;
+}
+
+.nav-link-lg::after {
+  content: "";
+  @apply absolute left-0 -bottom-1.5 h-[3px] w-0 bg-black
+         transition-all duration-300;
+}
+
+.nav-link-lg:hover::after {
+  @apply w-full;
+}
+
+.dropdown-item-lg {
+  @apply block px-7 py-4 text-base font-semibold text-gray-700
+         transition-colors duration-200;
+}
+
+.dropdown-item-lg:hover {
+  @apply bg-black/5 text-black;
+}
+
+.cta-btn-lg {
+  @apply bg-black text-white px-7 py-3 rounded-2xl
+         text-base font-extrabold
+         hover:scale-105 hover:bg-black/90
+         transition-all duration-300;
+}
+/*MARQUEE*/
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 5rem; /* same as gap-20 */
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+
+
