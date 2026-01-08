@@ -1,13 +1,13 @@
-import caleyx from "../../assets/caleyx-logo.avif";
-import directly from "../../assets/directly_logo.avif";
-import hg from "../../assets/hg_logo.avif";
-import mos from "../../assets/mos_logo1.avif";
-import motif from "../../assets/motif_digital.avif";
-import pupil from "../../assets/pupil_logo1.avif";
-import ritma from "../../assets/ritma_logo1.avif";
-import speedy from "../../assets/speedy-logo.svg";
-import tetra from "../../assets/tetra-logo.avif";
-import willyx from "../../assets/villlyx_logo.avif";
+import caleyx from "../../assets/logos/caleyx-logo.avif";
+import directly from "../../assets/logos/directly_logo.avif";
+import hg from "../../assets/logos/hg_logo.avif";
+import mos from "../../assets/logos/mos_logo1.avif";
+import motif from "../../assets/logos/motif_digital.avif";
+import pupil from "../../assets/logos/pupil_logo1.avif";
+import ritma from "../../assets/logos/ritma_logo1.avif";
+import speedy from "../../assets/logos/speedy-logo.svg";
+import tetra from "../../assets/logos/tetra-logo.avif";
+import willyx from "../../assets/logos/villlyx_logo.avif";
 
 export default function LogoTray() {
   return (
