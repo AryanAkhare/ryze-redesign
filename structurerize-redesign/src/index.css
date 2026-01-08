@@ -81,12 +81,14 @@
          transition-all duration-300;
 }
 /*MARQUEE*/
+/* ===== MARQUEE ===== */
+
 @keyframes marquee {
   from {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
@@ -97,9 +99,228 @@
 
 .marquee-track {
   display: flex;
+  align-items: center;
   gap: 5rem; /* same as gap-20 */
   width: max-content;
-  animation: marquee 20s linear infinite;
+  animation: marquee 25s linear infinite;
+  will-change: transform;
 }
 
 
+
+/* Heart Loader */
+/* Heart wrapper aligned to text */
+/* Wrapper (alignment already correct) */
+.heart-wrapper {
+  display: inline-flex;
+  align-items: baseline;
+  position: relative;
+  top: 0px;     /* baseline fine-tune */
+  left: 16px;   /* spacing from text */
+}
+
+/* Heart base */
+.heart {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  background-color: var(--color-text-primary);
+  transform: rotate(-45deg);
+  animation: heartBeatSlow 1.6s ease-in-out infinite;
+
+ 
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-origin: center;
+  filter: drop-shadow(0 0 0 var(--color-text-primary));
+}
+
+/* Hover = faster heartbeat */
+.heart-wrapper:hover .heart {
+  animation: heartBeatFast 0.7s ease-in-out infinite;
+}
+
+/* Heart lobes */
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-text-primary);
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -20px;   /* EXACTLY half of height */
+  left: 0;
+}
+
+.heart::after {
+  left: 20px;   /* EXACTLY half of width */
+  top: 0;
+}
+/* Slow (idle) beat */
+@keyframes heartBeatSlow {
+  0%, 100% {
+    transform: rotate(-45deg) scale(1);
+  }
+  50% {
+    transform: rotate(-45deg) scale(1.06);
+  }
+}
+
+/* Fast (hover) beat */
+@keyframes heartBeatFast {
+  0%, 100% {
+    transform: rotate(-45deg) scale(1);
+  }
+  50% {
+    transform: rotate(-45deg) scale(1.15);
+  }
+}
+
+
+/* ============================= */
+/* Editorial Testimonials Grid */
+/* ============================= */
+
+.editorial-grid {
+  display: grid;
+  gap: 16px;
+}
+
+/* ============================== */
+/* Testimonials Editorial Grid */
+/* ============================== */
+
+.testimonials-grid {
+  display: grid;
+  gap: 16px;
+}
+
+/* Desktop */
+/* ============================== */
+/* Testimonials Editorial Grid */
+/* ============================== */
+
+/* ============================== */
+/* Testimonials Editorial Grid */
+/* ============================== */
+
+/* ==============================
+   Testimonials Grid – Mobile First
+   ============================== */
+
+/* ==============================
+   Base – Mobile First
+   ============================== */
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* ==============================
+   Tablet / Small Laptop (Tasteful)
+   768px → 1279px
+   ============================== */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: none;
+  }
+
+  .leftTop,
+  .centerQuote,
+  .centerStat1,
+  .rightTop,
+  .leftMid,
+  .centerStat2,
+  .rightMid,
+  .leftBot,
+  .centerImage,
+  .rightBot {
+    grid-area: auto;
+  }
+}
+
+/* ==============================
+   True Desktop Editorial Layout
+   ≥ 1280px
+   ============================== */
+@media (min-width: 1280px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr 1.25fr 1fr;
+
+    grid-template-rows:
+      220px
+      100px
+      200px
+      260px;
+
+    grid-template-areas:
+      "leftTop centerQuote rightTop"
+      "leftTop centerStat1 rightTop"
+      "leftMid centerStat2 rightMid"
+      "leftBot centerImage rightBot";
+  }
+
+  .leftTop { grid-area: leftTop; }
+  .centerQuote { grid-area: centerQuote; }
+  .centerStat1 { grid-area: centerStat1; }
+  .rightTop { grid-area: rightTop; }
+
+  .leftMid { grid-area: leftMid; }
+  .centerStat2 { grid-area: centerStat2; }
+  .rightMid { grid-area: rightMid; }
+
+  .leftBot { grid-area: leftBot; }
+  .centerImage { grid-area: centerImage; }
+  .rightBot { grid-area: rightBot; }
+}
+
+
+
+
+/* ============================
+   TICKER ANIMATIONS (SAFE)
+   ============================ */
+
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes tickerScrollReverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-ticker {
+  animation: tickerScroll 30s linear infinite;
+}
+
+.animate-tickerReverse {
+  animation: tickerScrollReverse 30s linear infinite;
+}
+.animate-ticker:hover,
+.animate-tickerReverse:hover {
+  animation-play-state: paused;
+}
+@media (min-width: 1024px) {
+  .animate-ticker,
+  .animate-tickerReverse {
+    animation-duration: 22s;
+  }
+}
