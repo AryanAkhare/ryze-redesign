@@ -177,11 +177,11 @@ export default function Footer({ scrollYProgress, fullHeight = true }) {
               {/* FLOATING LABEL - BG matches section black #050505 */}
               <label
                 className="
-                  absolute left-5 top-1/2 -translate-y-1/2
+                  absolute left-5 top-12 -translate-y-7
                   px-2
                   text-base font-medium
                   text-gray-400
-                  bg-[#050505] 
+                  bg-[transparent] 
                   pointer-events-none
                   transition-all duration-300 ease-in-out
                   peer-focus:top-0
