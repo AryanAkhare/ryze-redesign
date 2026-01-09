@@ -1,5 +1,9 @@
 import React from "react";
 import { motion, useTransform } from "framer-motion";
+import FooterMetricCard from "../cards/FooterMetricCard";
+import FooterAccountsCard from "../cards/FooterAccountsCard";
+import FooterCreativeOptimizationCard from "../cards/FooterCreativeOptimizationCard";
+import FooterImprovementsCard from "../cards/FooterImprovementsCard";
 
 /**
  * ANIMATION VARIANTS
@@ -95,17 +99,17 @@ export default function Footer({ scrollYProgress, fullHeight = true }) {
         >
           {/* Managed Accounts Card - Full Span */}
           <motion.div variants={fadeInUp} className="md:col-span-2">
-            <AccountsCard />
+            <FooterAccountsCard />
           </motion.div>
 
           {/* Metric Cards Row - Side by Side */}
           <motion.div variants={fadeInUp} className="flex gap-4 md:col-span-2">
-            <MetricCard 
+            <FooterMetricCard 
               title="Avg. ROAS" 
               value="3.1x" 
               invert={true} 
             />
-            <MetricCard 
+            <FooterMetricCard 
               title="Target CPA" 
               value="$23.4" 
               invert={false} 
@@ -114,12 +118,12 @@ export default function Footer({ scrollYProgress, fullHeight = true }) {
 
           {/* Creative Engine Card */}
           <motion.div variants={fadeInUp} className="md:col-span-1">
-            <CreativeOptimizationCard />
+            <FooterCreativeOptimizationCard />
           </motion.div>
 
           {/* Action Center Card */}
           <motion.div variants={fadeInUp} className="md:col-span-1">
-            <ImprovementsCard />
+            <FooterImprovementsCard />
           </motion.div>
         </motion.div>
 
@@ -293,336 +297,5 @@ export default function Footer({ scrollYProgress, fullHeight = true }) {
         </div>
       </div>
     </motion.section>
-  );
-}
-
-// --- SUBCOMPONENTS ---
-
-/**
- * MetricCard: High-impact numerical display with Inversion Hover
- */
-function MetricCard({ title, value, invert }) {
-  return (
-    <motion.div 
-      variants={fadeInUp}
-      whileHover={{ scale: 1.03, y: -4 }}
-      style={invert ? {
-        backgroundColor: "var(--color-text-primary)",
-        borderColor: "var(--color-text-primary)",
-        boxShadow: "0 20px 40px -12px rgba(var(--color-primary-rgb), 0.4)",
-      } : {
-        boxShadow: "0 20px 40px -12px rgba(var(--color-primary-rgb), 0.2)",
-      }}
-      onMouseEnter={(e) => {
-        if (invert) {
-          e.currentTarget.style.backgroundColor = "white";
-          e.currentTarget.style.color = "var(--color-text-primary)";
-          e.currentTarget.style.borderColor = "white";
-        } else {
-          e.currentTarget.style.borderColor = "var(--color-text-primary)";
-          e.currentTarget.style.backgroundColor = "rgba(var(--color-primary-rgb), 0.1)";
-        }
-      }}
-      onMouseLeave={(e) => {
-        if (invert) {
-          e.currentTarget.style.backgroundColor = "var(--color-text-primary)";
-          e.currentTarget.style.color = "white";
-          e.currentTarget.style.borderColor = "var(--color-text-primary)";
-        } else {
-          e.currentTarget.style.borderColor = "";
-          e.currentTarget.style.backgroundColor = "";
-        }
-      }}
-      className={`group relative rounded-3xl p-6 flex-1 overflow-hidden transition-all duration-500 border cursor-pointer ${
-        invert 
-        ? "text-white" 
-        : "bg-white/5 border-white/10 text-white backdrop-blur-sm"
-      }`}
-    >
-      {/* Animated background glow on hover */}
-      <div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(var(--color-primary-rgb), ${invert ? 0.2 : 0.1}), transparent)`,
-        }}
-      />
-      
-      <p className={`relative z-10 text-[9px] uppercase tracking-[0.2em] font-black transition-colors duration-300 ${invert ? "opacity-90 group-hover:opacity-100" : "text-gray-400 group-hover:text-gray-300"}`}>
-        {title}
-      </p>
-      <div 
-        className={`relative z-10 mt-2 text-4xl font-black tracking-tighter transition-all duration-300 ${invert ? "" : ""}`}
-        onMouseEnter={(e) => { if (!invert) e.currentTarget.style.color = "var(--color-text-primary)"; }}
-        onMouseLeave={(e) => { if (!invert) e.currentTarget.style.color = ""; }}
-      >
-        {value}
-      </div>
-      
-      <motion.div 
-        style={{
-          color: invert ? "rgba(255,255,255,0.2)" : "rgba(var(--color-primary-rgb), 0.2)",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.color = invert ? "rgba(var(--color-primary-rgb), 0.4)" : "rgba(var(--color-primary-rgb), 0.6)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.color = invert ? "rgba(255,255,255,0.2)" : "rgba(var(--color-primary-rgb), 0.2)";
-        }}
-        className="absolute top-4 right-4 transition-all duration-300"
-        whileHover={{ rotate: 180, scale: 1.2 }}
-        transition={{ duration: 0.3 }}
-      >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
-        </svg>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-/**
- * AccountsCard: Integration status with Hover Reveal
- */
-function AccountsCard() {
-  return (
-    <motion.div 
-      variants={fadeInUp}
-      whileHover={{ y: -2 }}
-      className="rounded-3xl bg-white/[0.03] border border-white/10 p-6 backdrop-blur-xl shadow-2xl transition-all duration-500 group"
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = "rgba(var(--color-primary-rgb), 0.5)";
-        e.currentTarget.style.boxShadow = "0 25px 50px -12px rgba(var(--color-primary-rgb), 0.25)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "";
-        e.currentTarget.style.boxShadow = "";
-      }}
-    >
-      <div className="flex justify-between items-center mb-6">
-        <div className="flex items-center gap-3">
-          <div className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: "var(--color-text-primary)" }}></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ backgroundColor: "var(--color-text-primary)", boxShadow: "0 0 8px var(--color-text-primary)" }}></span>
-          </div>
-          <p className="text-[10px] font-bold tracking-widest text-gray-400 uppercase group-hover:text-gray-300 transition-colors">Live Integrations</p>
-        </div>
-        <div 
-          className="text-[10px] font-bold text-white/50 border border-white/10 px-3 py-1.5 rounded-lg bg-white/5 transition-all duration-300"
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = "rgba(var(--color-primary-rgb), 0.3)";
-            e.currentTarget.style.color = "var(--color-text-primary)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = "";
-            e.currentTarget.style.color = "";
-          }}
-        >
-          8ms Latency
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        {[
-          { label: "Google", icon: "G" },
-          { label: "Meta", icon: "M" },
-          { label: "TikTok", icon: "T" },
-          { label: "Shopify", icon: "S" }
-        ].map((item) => (
-          <motion.div 
-            key={item.label}
-            whileHover={{ scale: 1.08, y: -4, backgroundColor: "rgba(255, 255, 255, 1)" }}
-            whileTap={{ scale: 0.95 }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "var(--color-text-primary)";
-              e.currentTarget.style.borderColor = "rgba(var(--color-primary-rgb), 0.5)";
-              e.currentTarget.style.boxShadow = "0 10px 25px -5px rgba(var(--color-primary-rgb), 0.3)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "";
-              e.currentTarget.style.borderColor = "";
-              e.currentTarget.style.boxShadow = "";
-            }}
-            className="bg-white/5 rounded-2xl p-4 border border-white/5 cursor-pointer transition-all duration-300 flex flex-col items-center justify-center group/item"
-          >
-            <motion.div 
-              className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-black text-sm mb-2 transition-all duration-300 group-hover/item:text-white group-hover/item:scale-110"
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--color-text-primary)";
-                e.currentTarget.style.boxShadow = "0 0 20px rgba(var(--color-primary-rgb), 0.5)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "";
-                e.currentTarget.style.boxShadow = "";
-              }}
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.5 }}
-            >
-              {item.icon}
-            </motion.div>
-            <p className="text-[10px] font-black uppercase tracking-tighter transition-colors group-hover/item:text-[var(--color-text-primary)]">{item.label}</p>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
-  );
-}
-
-/**
- * CreativeOptimizationCard: Visual engine display with Scanner
- */
-function CreativeOptimizationCard() {
-  return (
-    <motion.div 
-      variants={fadeInUp}
-      whileHover={{ y: -4, scale: 1.02 }}
-      className="group rounded-3xl p-[1px] shadow-xl h-full transition-all duration-500"
-      style={{
-        backgroundImage: "linear-gradient(to bottom right, rgba(var(--color-primary-rgb), 0.2), rgba(var(--color-primary-rgb), 0.1), transparent)",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = "0 25px 50px -12px rgba(var(--color-primary-rgb), 0.3)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "";
-      }}
-    >
-      <div className="rounded-[23px] bg-[#0a0a0a] p-6 overflow-hidden relative h-full flex flex-col justify-between">
-        <div className="flex items-center justify-between mb-4">
-          <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest group-hover:text-gray-300 transition-colors">Creative Engine</p>
-          <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: "var(--color-text-primary)", boxShadow: "0 0 8px var(--color-text-primary)" }} />
-        </div>
-        
-        <motion.div 
-          whileHover={{ scale: 1.05, x: 4 }}
-          className="relative z-10 bg-white/[0.03] rounded-2xl p-5 border border-white/10 flex justify-between items-center group-hover:bg-white/[0.05] transition-all duration-300 cursor-pointer"
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = "rgba(var(--color-primary-rgb), 0.5)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = "";
-          }}
-        >
-          <div className="flex gap-4 items-center">
-            <motion.div 
-              className="w-12 h-12 rounded-lg opacity-90"
-              style={{
-                backgroundImage: "linear-gradient(to top right, var(--color-text-primary), #ff7b47)",
-                boxShadow: "0 0 20px rgba(var(--color-primary-rgb), 0.4)",
-              }}
-              animate={{ 
-                boxShadow: [
-                  "0_0_20px_rgba(255,72,1,0.4)",
-                  "0_0_30px_rgba(255,72,1,0.6)",
-                  "0_0_20px_rgba(255,72,1,0.4)"
-                ]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <div>
-              <p className="text-[10px] text-gray-500 uppercase font-black group-hover:text-gray-400 transition-colors">Best Performer</p>
-              <p className="text-sm font-bold text-white tracking-tight transition-colors group-hover:text-[var(--color-text-primary)]">Main_Hero_V2.mp4</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-end">
-            
-            
-          </div>
-        </motion.div>
-
-        {/* Animated AI Scanning Line */}
-        <motion.div 
-          animate={{ y: [0, 150, 0] }} 
-          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent to-transparent z-0 blur-[1px]"
-          style={{ backgroundImage: "linear-gradient(to right, transparent, rgba(var(--color-primary-rgb), 0.8), transparent)" }}
-        />
-      </div>
-    </motion.div>
-  );
-}
-
-/**
- * ImprovementsCard: AI Recommendation List with Hover Inversion
- */
-function ImprovementsCard() {
-  return (
-    <motion.div 
-      variants={fadeInUp}
-      whileHover={{ y: -4, scale: 1.02 }}
-      className="rounded-3xl bg-white/5 border border-white/10 p-8 relative overflow-hidden group shadow-2xl h-full transition-all duration-500 hover:bg-white/[0.08]"
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = "rgba(var(--color-primary-rgb), 0.5)";
-        e.currentTarget.style.boxShadow = "0 25px 50px -12px rgba(var(--color-primary-rgb), 0.25)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "";
-        e.currentTarget.style.boxShadow = "";
-      }}
-    >
-      {/* Background gradient on hover */}
-      <div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
-        style={{ backgroundImage: "linear-gradient(to bottom right, rgba(var(--color-primary-rgb), 0.05), transparent)" }}
-      />
-      
-      <div className="flex items-center justify-between mb-6 relative z-10">
-        <motion.p 
-          className="text-[10px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2 transition-colors duration-300 group-hover:text-[var(--color-text-primary)]"
-          whileHover={{ x: 4 }}
-        >
-          <motion.span 
-            className="text-lg"
-            style={{ color: "var(--color-text-primary)" }}
-            animate={{ rotate: [0, 10, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-          >
-            ✦
-          </motion.span>
-          AI Action Center
-        </motion.p>
-        <motion.span 
-          className="text-[10px] text-white px-3 py-1 rounded-lg font-black"
-          style={{
-            backgroundColor: "var(--color-text-primary)",
-            boxShadow: "0 0 15px rgba(var(--color-primary-rgb), 0.5)",
-          }}
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          whileHover={{ scale: 1.1 }}
-        >
-          LIVE
-        </motion.span>
-      </div>
-
-      <div className="space-y-5 relative z-10">
-        {[
-          "Shift 20% budget to Meta Ads",
-          "Refresh creative: Frequency fatigue",
-          "Auto-bid: Competitive gap detected"
-        ].map((text, i) => (
-          <motion.div 
-            key={i}
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            whileHover={{ x: 8, scale: 1.02 }}
-            className="flex gap-4 items-center group/item cursor-pointer transition-all duration-300"
-          >
-            <motion.div 
-              className="flex-shrink-0 w-2 h-2 rounded-full"
-              style={{
-                backgroundColor: "var(--color-text-primary)",
-                boxShadow: "0 0 12px var(--color-text-primary)",
-              }}
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-              whileHover={{ scale: 1.5 }}
-            />
-            <p className="text-[11px] leading-relaxed text-gray-400 group-hover/item:text-white font-bold transition-colors duration-300 group-hover:text-[var(--color-text-primary)]">{text}</p>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
   );
 }

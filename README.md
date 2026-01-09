@@ -58,24 +58,83 @@ This project is a complete redesign of the Ryze website (https://www.get-ryze.ai
 structurerize-redesign/
 ├── public/
 │   ├── favicon.svg
+│   ├── logo.jpg
 │   └── vite.svg
+│
 ├── src/
 │   ├── assets/
-│   │   ├── logos/          # Client logos
-│   │   └── testimonials/   # Testimonial images
+│   │   ├── logos/              # Client/partner logos
+│   │   │   ├── caleyx-logo.avif
+│   │   │   ├── directly_logo.avif
+│   │   │   ├── hg_logo.avif
+│   │   │   ├── mos_logo1.avif
+│   │   │   ├── motif_digital.avif
+│   │   │   ├── pupil_logo1.avif
+│   │   │   ├── react.svg
+│   │   │   ├── ritma_logo1.avif
+│   │   │   ├── speedy-logo.svg
+│   │   │   ├── tetra-logo.avif
+│   │   │   └── villlyx_logo.avif
+│   │   ├── story/              # Story section assets
+│   │   └── testimonials/        # Testimonial images
+│   │       ├── google_event.avif
+│   │       ├── team-1.avif
+│   │       └── team-2.avif
+│   │
 │   ├── components/
-│   │   ├── layout/         # Navbar, Footer
-│   │   ├── sections/       # Page sections
-│   │   └── ui/             # Reusable UI components
-│   ├── pages/              # Route pages
-│   ├── App.jsx             # Main app component
-│   ├── main.jsx            # Entry point
-│   └── index.css           # Global styles & animations
+│   │   ├── cards/              # Reusable card components
+│   │   │   ├── AccountAuditsCard.jsx
+│   │   │   ├── BigImageCard.jsx
+│   │   │   ├── BudgetReallocationCard.jsx
+│   │   │   ├── CardShell.jsx
+│   │   │   ├── CreativeAnalysisCard.jsx
+│   │   │   ├── CreativeGenerationCard.jsx
+│   │   │   ├── FooterAccountsCard.jsx
+│   │   │   ├── FooterCreativeOptimizationCard.jsx
+│   │   │   ├── FooterImprovementsCard.jsx
+│   │   │   ├── FooterMetricCard.jsx
+│   │   │   ├── ImageCard.jsx
+│   │   │   ├── KeywordOptimizationCard.jsx
+│   │   │   ├── QuoteCard.jsx
+│   │   │   ├── StatCard.jsx
+│   │   │   ├── StatCard2.jsx
+│   │   │   ├── StatusBadge.jsx
+│   │   │   └── TestimonialCard.jsx
+│   │   │
+│   │   ├── layout/             # Layout components
+│   │   │   ├── Footer.jsx       # Main footer with parallax effects
+│   │   │   └── Navbar.jsx       # Navigation bar with theme toggle
+│   │   │
+│   │   └── sections/            # Page sections
+│   │       ├── AuditHero.jsx
+│   │       ├── Comparison.jsx
+│   │       ├── FeatureCard.jsx
+│   │       ├── Features.jsx     # Features section (uses cards/)
+│   │       ├── Hero.jsx
+│   │       ├── LogoTray.jsx
+│   │       ├── Testimonials.jsx # Testimonials section (uses cards/)
+│   │       └── Ticker.jsx
+│   │
+│   ├── pages/                   # Route pages
+│   │   ├── About.jsx
+│   │   ├── CaseStudies.jsx
+│   │   ├── Home.jsx
+│   │   ├── NotFound.jsx         # 404 page
+│   │   └── OurStory.jsx
+│   │
+│   ├── App.jsx                  # Main app component with routing
+│   ├── App.css
+│   ├── index.css                # Global styles & CSS variables
+│   └── main.jsx                 # Entry point
+│
+├── eslint.config.js
+├── index.html
 ├── package.json
-├── vite.config.js
+├── package-lock.json
+├── postcss.config.js
 ├── tailwind.config.js
-`
-``
+└── vite.config.js
+```
 
 ### Component Organization
 
