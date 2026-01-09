@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
-/* =========================
-   CTA Button – Fill Hover
-   ========================= */
+
 :root {
-  --color-bg: #ffffff;          /* background */
-  --color-text-primary: #FF4801; /* main text */
-  --color-text-secondary:#090a0a; /* muted text */
-  --color-accent:#090a0a;       /* CTA / focus */
+  --color-bg: #ffffff;          
+  --color-text-primary: #FF4801; 
+  --color-text-secondary:#090a0a; 
+  --color-accent:#090a0a;
+  
+  --color-primary-rgb: 255, 72, 1;
+  --color-primary-gradient: linear-gradient(to right, var(--color-text-primary), #ff7b47);
 }
 .cta-btn-lg {
   padding: 15px 25px;
@@ -81,7 +82,7 @@
          transition-all duration-300;
 }
 /*MARQUEE*/
-/* ===== MARQUEE ===== */
+
 
 @keyframes marquee {
   from {
@@ -100,7 +101,7 @@
 .marquee-track {
   display: flex;
   align-items: center;
-  gap: 5rem; /* same as gap-20 */
+  gap: 5rem; 
   width: max-content;
   animation: marquee 25s linear infinite;
   will-change: transform;
@@ -108,9 +109,7 @@
 
 
 
-/* Heart Loader */
-/* Heart wrapper aligned to text */
-/* Wrapper (alignment already correct) */
+/* HEART LOADER */
 .heart-wrapper {
   display: inline-flex;
   align-items: baseline;
@@ -152,15 +151,15 @@
 }
 
 .heart::before {
-  top: -20px;   /* EXACTLY half of height */
+  top: -20px;   
   left: 0;
 }
 
 .heart::after {
-  left: 20px;   /* EXACTLY half of width */
+  left: 20px;   
   top: 0;
 }
-/* Slow (idle) beat */
+
 @keyframes heartBeatSlow {
   0%, 100% {
     transform: rotate(-45deg) scale(1);
@@ -170,7 +169,7 @@
   }
 }
 
-/* Fast (hover) beat */
+
 @keyframes heartBeatFast {
   0%, 100% {
     transform: rotate(-45deg) scale(1);
@@ -199,22 +198,7 @@
   gap: 16px;
 }
 
-/* Desktop */
-/* ============================== */
-/* Testimonials Editorial Grid */
-/* ============================== */
 
-/* ============================== */
-/* Testimonials Editorial Grid */
-/* ============================== */
-
-/* ==============================
-   Testimonials Grid – Mobile First
-   ============================== */
-
-/* ==============================
-   Base – Mobile First
-   ============================== */
 
 .testimonials-grid {
   display: grid;
@@ -222,10 +206,7 @@
   gap: 16px;
 }
 
-/* ==============================
-   Tablet / Small Laptop (Tasteful)
-   768px → 1279px
-   ============================== */
+
 @media (min-width: 768px) and (max-width: 1279px) {
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -247,10 +228,7 @@
   }
 }
 
-/* ==============================
-   True Desktop Editorial Layout
-   ≥ 1280px
-   ============================== */
+
 @media (min-width: 1280px) {
   .testimonials-grid {
     grid-template-columns: 1fr 1.25fr 1fr;
@@ -285,9 +263,7 @@
 
 
 
-/* ============================
-   TICKER ANIMATIONS (SAFE)
-   ============================ */
+
 
 @keyframes tickerScroll {
   0% {
