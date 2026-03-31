@@ -1,6 +1,8 @@
 # Ryze Website Redesign
 
 A modern, visually stunning redesign of the Ryze AI advertising platform website, built with React, Framer Motion, and Tailwind CSS.
+<img width="1897" height="1047" alt="image" src="https://github.com/user-attachments/assets/04fa6745-aac6-4132-bcb8-2d6ac484e373" />
+
 
 
 
@@ -24,7 +26,7 @@ This project is a complete redesign of the Ryze website (https://www.get-ryze.ai
 - **Modular Architecture**: Reusable, maintainable component structure
 - **Performance**: Optimized animations and lazy loading , but still a bit laggy because of framer motion.
 
-## ✨ Features
+##  Features
 
 ### Core Features
 
